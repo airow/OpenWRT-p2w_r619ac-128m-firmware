@@ -90,6 +90,12 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        
+    - name: Upload dl directory
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt_dl_directory
+        path: openwrt/dl
 
     - name: Compile the firmware
       id: compile
@@ -105,12 +111,6 @@ jobs:
       with:
         name: OpenWrt_directory
         path: openwrt/bin
-
-    - name: Upload dl directory
-      uses: actions/upload-artifact@master
-      with:
-        name: OpenWrt_dl_directory
-        path: openwrt/dl
         
     - name: Organize files
       id: organize
