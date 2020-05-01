@@ -106,6 +106,12 @@ jobs:
         name: OpenWrt_directory
         path: openwrt/bin
 
+    - name: Upload dl directory
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt_dl_directory
+        path: openwrt/dl
+        
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
